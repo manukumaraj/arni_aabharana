@@ -1,176 +1,1444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Arni Abarana - Handmade Clay Jewellery</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arni Abarana | Artisan Clay Earrings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-clay: #D4B996;
+            --secondary-clay: #A67C52;
+            --accent-terracotta: #BF6A4B;
+            --dark-earth: #3E3A33;
+            --light-cream: #F9F6F2;
+            --text-dark: #2D2924;
+            --text-light: #7A756E;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
         body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: #faf7f5;
-            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--light-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
+
+        /* Premium Logo & Header */
         header {
-            background: #8e735b;
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(249, 246, 242, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            animation: slideDown 0.8s ease-out;
         }
-        header img {
-            width: 120px;
-            margin-bottom: 10px;
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
-        header h1 {
-            margin: 0;
-            font-size: 42px;
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-terracotta), var(--secondary-clay));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            font-family: 'Cormorant Garamond', serif;
+            box-shadow: var(--shadow);
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--dark-earth);
             letter-spacing: 1px;
         }
-        nav {
-            background: #eee;
-            padding: 12px 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+
+        .logo-subtitle {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            margin-top: -3px;
+            font-family: 'Montserrat', sans-serif;
         }
-        nav a {
-            margin: 0 18px;
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .nav-links a {
             text-decoration: none;
-            color: #444;
-            font-weight: bold;
-            transition: 0.3s;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
         }
-        nav a:hover {
-            color: #8e735b;
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-terracotta);
+            transition: width 0.4s ease;
         }
+
+        .nav-links a:hover {
+            color: var(--accent-terracotta);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-icon {
+            color: var(--dark-earth);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-icon:hover {
+            color: var(--accent-terracotta);
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-terracotta);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-earth);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
         .hero {
-            padding: 80px;
-            text-align: center;
-            background: linear-gradient(#f5ece6, #e9dfd8);
-            animation: fadeIn 1.5s ease;
+            padding-top: 150px;
+            padding-bottom: 100px;
+            position: relative;
+            overflow: hidden;
         }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(249, 246, 242, 0.9), rgba(249, 246, 242, 0.7)), 
+                        url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: 4.2rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--dark-earth);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 550px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-terracotta);
+            color: white;
+            box-shadow: 0 5px 15px rgba(191, 106, 75, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent-terracotta);
+            border-color: var(--accent-terracotta);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(191, 106, 75, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--dark-earth);
+            border-color: var(--dark-earth);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--dark-earth);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: transparent;
+            color: #25D366;
+            border-color: #25D366;
+            transform: translateY(-3px);
+        }
+
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-earth);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-terracotta);
+            margin: 15px auto 0;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .products-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid var(--primary-clay);
+            border-radius: 50px;
+            color: var(--text-dark);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-clay);
+            color: white;
+            border-color: var(--primary-clay);
+        }
+
+        /* Modern Product Gallery */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+        .product-card:nth-child(7) { animation-delay: 0.7s; }
+        .product-card:nth-child(8) { animation-delay: 0.8s; }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-image {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.5));
+            opacity: 0;
+            transition: opacity 0.4s;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            padding: 20px;
+        }
+
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+
+        .quick-view {
+            background-color: white;
+            color: var(--dark-earth);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .quick-view:hover {
+            background-color: var(--accent-terracotta);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-category {
+            font-size: 0.85rem;
+            color: var(--accent-terracotta);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--dark-earth);
+            font-weight: 600;
+        }
+
+        .product-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-terracotta);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .product-price span {
+            font-size: 1rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+            margin-left: 5px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-cream);
+            color: var(--dark-earth);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .action-btn:hover {
+            background-color: var(--accent-terracotta);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Popup Image Viewer */
+        .image-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        .section {
-            padding: 60px 20px;
-            max-width: 1100px;
-            margin: auto;
+
+        .popup-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
         }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            padding-top: 20px;
+
+        .popup-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 20px;
+
+        .close-popup {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-popup:hover {
+            color: var(--accent-terracotta);
+            transform: rotate(90deg);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition);
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 5px 25px 10px rgba(37, 211, 102, 0.6); }
+            100% { box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            background-color: #128C7E;
+        }
+
+        .whatsapp-text {
+            position: absolute;
+            right: 70px;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .whatsapp-float:hover .whatsapp-text {
+            opacity: 1;
+        }
+
+        /* Instagram Section */
+        .instagram-section {
+            background-color: var(--dark-earth);
+            color: white;
             text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
+            padding: 80px 0;
         }
-        .card:hover {
+
+        .instagram-section .section-title {
+            color: white;
+        }
+
+        .instagram-section .section-subtitle {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .instagram-feed {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .insta-post {
+            height: 200px;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .insta-post:hover {
             transform: scale(1.05);
         }
-        .card img {
+
+        .insta-post img {
             width: 100%;
-            height: 230px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 8px;
+            transition: transform 0.5s;
         }
-        .contact-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            background: #8e735b;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: 0.3s;
+
+        .insta-post:hover img {
+            transform: scale(1.1);
         }
-        .contact-btn:hover {
-            background: #7a604c;
+
+        .insta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(62, 58, 51, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s;
         }
-        footer {
-            background: #8e735b;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
+
+        .insta-post:hover .insta-overlay {
+            opacity: 1;
+        }
+
+        .insta-icon {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .instagram-btn {
             margin-top: 40px;
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .instagram-btn:hover {
+            background-color: white;
+            color: var(--dark-earth);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-earth);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--primary-clay);
+        }
+
+        .footer-col p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-clay);
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--accent-terracotta);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-actions {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 2.4rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .instagram-feed {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/1234567890?text=Hi%20Arni%20Abarana!%20I'm%20interested%20in%20your%20clay%20earrings." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-text">Order on WhatsApp</span>
+    </a>
+
+    <!-- Popup Image Viewer -->
+    <div class="image-popup" id="imagePopup">
+        <div class="popup-content">
+            <img id="popupImage" src="" alt="Product Image">
+            <button class="close-popup" id="closePopup">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Header -->
     <header>
-        <img src="https://via.placeholder.com/120" alt="Logo">
-        <h1>Arni Abarana</h1>
-        <p>Handcrafted Clay Earrings • Artistic Jewellery</p>
+        <div class="container header-container">
+            <a href="#" class="logo-container">
+                <div class="logo-icon">AA</div>
+                <div>
+                    <div class="logo-text">Arni Abarana</div>
+                    <div class="logo-subtitle">ARTISAN CLAY EARRINGS</div>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Shop</a></li>
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <a href="#" class="nav-icon">
+                    <i class="fas fa-search"></i>
+                </a>
+                <a href="#" class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a href="#" class="nav-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">3</span>
+                </a>
+            </div>
+        </div>
     </header>
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#products">Products</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <section class="hero">
-        <h2>Classic • Artistic • Handmade</h2>
-        <p>Experience the grace of handcrafted clay earrings made with passion.</p>
-        <a class="contact-btn" href="https://wa.me/910000000000">Order on WhatsApp</a>
-    </section>
-
-    <section id="about" class="section">
-        <h2>About Arni Abarana</h2>
-        <p>
-            Arni Abarana creates elegant handcrafted clay jewellery blending tradition and modern art. Every design is sculpted with patience, painted with precision, and crafted with love.
-        </p>
-    </section>
-
-    <section id="products" class="section">
-        <h2>Our Signature Earrings</h2>
-        <div class="products">
-            <div class="card">
-                <img src="https://via.placeholder.com/300x230" />
-                <h3>Matte Collection</h3>
-                <p>Minimal & classic matte-textured earrings.</p>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300x230" />
-                <h3>Glossy Floral</h3>
-                <p>Shiny, colourful, hand-painted floral designs.</p>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300x230" />
-                <h3>Antique Clay</h3>
-                <p>Ethnic-inspired traditional jewellery pieces.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Wearable Art,<br>Hand-Sculpted with Intention</h1>
+                <p>Each Arni Abarana piece is a unique clay sculpture transformed into elegant, lightweight earrings. Discover the perfect blend of earthy texture and modern design.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">
+                        <i class="fas fa-gem"></i> Shop Collection
+                    </a>
+                    <a href="#collections" class="btn btn-secondary">
+                        <i class="fas fa-palette"></i> View Collections
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="section">
-        <h2>Product Gallery</h2>
-        <div class="products">
-            <img class="card" src="https://via.placeholder.com/300x230" />
-            <img class="card" src="https://via.placeholder.com/300x230" />
-            <img class="card" src="https://via.placeholder.com/300x230" />
-            <img class="card" src="https://via.placeholder.com/300x230" />
+    <!-- Products Section -->
+    <section class="section" id="products">
+        <div class="container">
+            <h2 class="section-title">Handcrafted Earrings</h2>
+            <p class="section-subtitle">Each pair is uniquely sculpted, dried, and finished by hand in our studio. No two pieces are exactly alike.</p>
+            
+            <div class="products-filter">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="terra">Terra Collection</button>
+                <button class="filter-btn" data-filter="aura">Aura Collection</button>
+                <button class="filter-btn" data-filter="origami">Origami Collection</button>
+                <button class="filter-btn" data-filter="best">Best Sellers</button>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Product cards will be generated by JavaScript -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="#contact" class="btn btn-primary" style="padding: 15px 40px;">
+                    <i class="fas fa-eye"></i> View All Products
+                </a>
+            </div>
         </div>
     </section>
 
-    <section id="contact" class="section">
-        <h2>Contact Us</h2>
-        <p>Email: arniboutique@example.com</p>
-        <p>Instagram: <a href="https://instagram.com/arni_abarana">@arni_abarana</a></p>
-        <a class="contact-btn" href="https://wa.me/910000000000">Chat on WhatsApp</a>
+    <!-- Collections Section -->
+    <section class="section" id="collections" style="background-color: #f5f1eb;">
+        <div class="container">
+            <h2 class="section-title">Our Collections</h2>
+            <p class="section-subtitle">Explore our curated collections, each with a distinct aesthetic and story.</p>
+            
+            <div class="products-grid">
+                <!-- Collection cards will be generated by JavaScript -->
+            </div>
+        </div>
     </section>
 
-    <footer>
-        © 2026 Arni Abarana · Handcrafted Clay Jewellery
+    <!-- Instagram Section -->
+    <section class="instagram-section" id="instagram">
+        <div class="container">
+            <h2 class="section-title">Follow Our Journey</h2>
+            <p class="section-subtitle">See our latest creations, behind-the-scenes, and styling inspiration on Instagram.</p>
+            
+            <div class="instagram-feed">
+                <!-- Instagram posts will be generated by JavaScript -->
+            </div>
+            
+            <a href="https://instagram.com/arniabarana" class="btn instagram-btn" target="_blank">
+                <i class="fab fa-instagram"></i> Follow @arniabarana
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Arni Abarana</h3>
+                    <p>Creating wearable art from earth to adornment. Each piece is hand-sculpted with intention in our sustainable studio.</p>
+                    <div class="social-icons">
+                        <a href="https://instagram.com/arniabarana" class="social-icon" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://pinterest.com/arniabarana" class="social-icon" target="_blank">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                        <a href="https://etsy.com/shop/arniabarana" class="social-icon" target="_blank">
+                            <i class="fab fa-etsy"></i>
+                        </a>
+                        <a href="https://tiktok.com/@arniabarana" class="social-icon" target="_blank">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#products"><i class="fas fa-chevron-right"></i> Shop All</a></li>
+                        <li><a href="#collections"><i class="fas fa-chevron-right"></i> Collections</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Our Story</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Shipping & Returns</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Care Instructions</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Size Guide</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Wholesale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Artisan Studio, Clay District</p>
+                    <p><i class="fas fa-envelope"></i> hello@arniabarana.com</p>
+                    <p><i class="fas fa-phone"></i> +1 (234) 567-8900</p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp Order: +1 (234) 567-8901</p>
+                    <a href="https://wa.me/12345678901?text=Hi%20Arni%20Abarana!%20I'd%20like%20to%20place%20an%20order." class="btn btn-whatsapp" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">
+                        <i class="fab fa-whatsapp"></i> Order on WhatsApp
+                    </a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Arni Abarana. All rights reserved. Handmade with intention.</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Products Data
+        const products = [
+            {
+                id: 1,
+                name: "Terra Drop Earrings",
+                category: "terra",
+                collection: "Terra Collection",
+                price: "$42",
+                oldPrice: "$48",
+                description: "Earthy tones with organic texture, inspired by river stones.",
+                image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                bestseller: true
+            },
+            {
+                id: 2,
+                name: "Aura Hoops",
+                category: "aura",
+                collection: "Aura Collection",
+                price: "$38",
+                oldPrice: "",
+                description: "Luminous glaze catches the light with every movement.",
+                image: "https://images.unsplash.com/photo-1596703923338-48f1c07e4f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                bestseller: true
+            },
+            {
+                id: 3,
+                name: "Origami Triangles",
+                category: "origami",
+                collection: "Origami Collection",
+                price: "$46",
+                oldPrice: "$52",
+                description: "Geometric precision in soft clay with matte finish.",
+                image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                bestseller: false
+            },
+            {
+                id: 4,
+                name: "Clay Blooms",
+                category: "terra",
+                collection: "Terra Collection",
+                price: "$44",
+                oldPrice: "",
+                description: "Floral-inspired sculptural pieces with delicate details.",
+                image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                bestseller: true
+            },
+            {
+                id: 5,
+                name: "Moonlight Drops",
+                category: "aura",
+                collection: "Aura Collection",
+                price: "$52",
+                oldPrice: "$58",
+                description: "Iridescent finish that shifts with light, elegant teardrop shape.",
+                image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                bestseller: false
+            },
+            {
+                id: 6,
+                name: "Geometric Cubes",
+                category: "origami",
+                collection: "Origami Collection",
+                price: "$48",
+                oldPrice: "",
+                description: "Modern architectural forms with clean lines and edges.",
+                image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                bestseller: true
+            },
+            {
+                id: 7,
+                name: "Desert Stones",
+                category: "terra",
+                collection: "Terra Collection",
+                price: "$39",
+                oldPrice: "$45",
+                description: "Natural stone texture in warm desert hues.",
+                image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                bestseller: false
+            },
+            {
+                id: 8,
+                name: "Pearl Clay Fusion",
+                category: "aura",
+                collection: "Aura Collection",
+                price: "$56",
+                oldPrice: "",
+                description: "Clay meets freshwater pearls for elegant contrast.",
+                image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                bestseller: true
+            }
+        ];
+
+        // Collections Data
+        const collections = [
+            {
+                id: 1,
+                name: "Terra Collection",
+                description: "Earthy tones and organic textures inspired by the natural world",
+                image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                count: "12 items"
+            },
+            {
+                id: 2,
+                name: "Aura Collection",
+                description: "Luminous glazes and soft curves that capture and reflect light",
+                image: "https://images.unsplash.com/photo-1596703923338-48f1c07e4f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                count: "8 items"
+            },
+            {
+                id: 3,
+                name: "Origami Collection",
+                description: "Geometric precision meets organic material in bold forms",
+                image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                count: "10 items"
+            }
+        ];
+
+        // Instagram Posts Data
+        const instagramPosts = [
+            { id: 1, image: "https://images.unsplash.com/photo-1596703923338-48f1c07e4f2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+            { id: 2, image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+            { id: 3, image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+            { id: 4, image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+            { id: 5, image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" },
+            { id: 6, image: "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w-400&q=80" }
+        ];
+
+        // DOM Elements
+        const productsGrid = document.getElementById('productsGrid');
+        const imagePopup = document.getElementById('imagePopup');
+        const popupImage = document.getElementById('popupImage');
+        const closePopup = document.getElementById('closePopup');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        const navActions = document.querySelector('.nav-actions');
+
+        // Generate Products
+        function generateProducts(filter = 'all') {
+            productsGrid.innerHTML = '';
+            
+            let filteredProducts = products;
+            if (filter !== 'all') {
+                if (filter === 'best') {
+                    filteredProducts = products.filter(product => product.bestseller);
+                } else {
+                    filteredProducts = products.filter(product => product.category === filter);
+                }
+            }
+            
+            filteredProducts.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.setAttribute('data-category', product.category);
+                
+                productCard.innerHTML = `
+                    <div class="product-image" data-image="${product.image}">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="product-overlay">
+                            <div class="quick-view" data-image="${product.image}">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.collection}</div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-footer">
+                            <div class="product-price">${product.price} ${product.oldPrice ? `<span>${product.oldPrice}</span>` : ''}</div>
+                            <div class="product-actions">
+                                <button class="action-btn" title="Add to Wishlist">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="action-btn whatsapp-order" data-product="${product.name}" title="Order on WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </button>
+                                <button class="action-btn" title="Quick View">
+                                    <i class="fas fa-shopping-bag"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                productsGrid.appendChild(productCard);
+            });
+            
+            // Add event listeners to new quick view buttons
+            document.querySelectorAll('.quick-view').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const imageUrl = this.getAttribute('data-image');
+                    openImagePopup(imageUrl);
+                });
+            });
+            
+            // Add event listeners to WhatsApp order buttons
+            document.querySelectorAll('.whatsapp-order').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productName = this.getAttribute('data-product');
+                    openWhatsAppOrder(productName);
+                });
+            });
+        }
+
+        // Generate Collections
+        function generateCollections() {
+            const collectionsGrid = document.querySelector('#collections .products-grid');
+            collectionsGrid.innerHTML = '';
+            
+            collections.forEach(collection => {
+                const collectionCard = document.createElement('div');
+                collectionCard.className = 'product-card';
+                
+                collectionCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${collection.image}" alt="${collection.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${collection.name}</h3>
+                        <p class="product-description">${collection.description}</p>
+                        <div class="product-footer">
+                            <div class="product-price">${collection.count}</div>
+                            <a href="#products" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">
+                                View Collection
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                collectionsGrid.appendChild(collectionCard);
+            });
+        }
+
+        // Generate Instagram Feed
+        function generateInstagramFeed() {
+            const instagramFeed = document.querySelector('.instagram-feed');
+            instagramFeed.innerHTML = '';
+            
+            instagramPosts.forEach(post => {
+                const instaPost = document.createElement('a');
+                instaPost.href = 'https://instagram.com/arniabarana';
+                instaPost.target = '_blank';
+                instaPost.className = 'insta-post';
+                
+                instaPost.innerHTML = `
+                    <img src="${post.image}" alt="Instagram Post">
+                    <div class="insta-overlay">
+                        <i class="fab fa-instagram insta-icon"></i>
+                    </div>
+                `;
+                
+                instagramFeed.appendChild(instaPost);
+            });
+        }
+
+        // Open Image Popup
+        function openImagePopup(imageUrl) {
+            popupImage.src = imageUrl;
+            imagePopup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Image Popup
+        function closeImagePopup() {
+            imagePopup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Open WhatsApp Order
+        function openWhatsAppOrder(productName) {
+            const phoneNumber = '1234567890';
+            const message = `Hi Arni Abarana! I'd like to order the "${productName}". Can you please provide more details?`;
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generate initial content
+            generateProducts();
+            generateCollections();
+            generateInstagramFeed();
+            
+            // Filter products
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    // Filter products
+                    const filter = this.getAttribute('data-filter');
+                    generateProducts(filter);
+                });
+            });
+            
+            // Image popup events
+            closePopup.addEventListener('click', closeImagePopup);
+            imagePopup.addEventListener('click', function(e) {
+                if (e.target === imagePopup) {
+                    closeImagePopup();
+                }
+            });
+            
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                const isVisible = navLinks.style.display === 'flex';
+                navLinks.style.display = isVisible ? 'none' : 'flex';
+                navActions.style.display = isVisible ? 'none' : 'flex';
+                
+                if (!isVisible) {
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100%';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.backgroundColor = 'rgba(249, 246, 242, 0.98)';
+                    navLinks.style.padding = '2rem';
+                    navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                    navLinks.style.gap = '1.5rem';
+                    
+                    navActions.style.position = 'absolute';
+                    navActions.style.top = 'calc(100% + 200px)';
+                    navActions.style.left = '0';
+                    navActions.style.width = '100%';
+                    navActions.style.backgroundColor = 'rgba(249, 246, 242, 0.98)';
+                    navActions.style.padding = '1.5rem 2rem';
+                    navActions.style.justifyContent = 'center';
+                    navActions.style.gap = '2rem';
+                    navActions.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (window.innerWidth <= 768) {
+                            navLinks.style.display = 'none';
+                            navActions.style.display = 'none';
+                        }
+                    }
+                });
+            });
+            
+            // Add animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe product cards for scroll animation
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+
+        // Close mobile menu when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                if (!e.target.closest('header') && !e.target.closest('.mobile-menu-btn')) {
+                    navLinks.style.display = 'none';
+                    navActions.style.display = 'none';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
